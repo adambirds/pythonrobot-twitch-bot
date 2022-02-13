@@ -52,18 +52,24 @@ class Bot(commands.Bot):
         !github command
         """
         print(ctx.channel.name)
-        await ctx.send(
-            f'Here is my GitHub link: {conf_options[ctx.channel.name]["GITHUB_LINK"]}'
-        )
+        if conf_options[ctx.channel.name]["GITHUB_LINK"] != "":
+            await ctx.send(
+                f'Here is my GitHub link: {conf_options[ctx.channel.name]["GITHUB_LINK"]}'
+            )
+        else:
+            await ctx.send(f"I don't currently have a GitHub account.")
 
     @commands.command()
     async def discord(self, ctx: commands.Context):
         """
         !discord command
         """
-        await ctx.send(
-            f'Here is the link to my Discord channel: {conf_options[ctx.channel.name]["DISCORD_LINK"]}'
-        )
+        if conf_options[ctx.channel.name]["DISCORD_LINK"] != "":
+            await ctx.send(
+                f'Here is the link to my Discord server: {conf_options[ctx.channel.name]["DISCORD_LINK"]}'
+            )
+        else:
+            await ctx.send(f"I don't currently have a Discord server.")
 
     @commands.command(aliases=["roll"])
     async def dice(self, ctx: commands.Context):
@@ -95,9 +101,12 @@ if __name__ == "__main__":
         """
         print(f"{payload.data.user.name} followed {payload.data.broadcaster.name}")
         channel = bot.get_channel(payload.data.broadcaster.name)
-        await channel.send(
-            f"Thanks for the follow {payload.data.user.name}! Please join our discord server: {conf_options[(payload.data.broadcaster.name).lower()]['DISCORD_LINK']}"
-        )
+        if conf_options[(payload.data.broadcaster.name).lower()]["DISCORD_LINK"] != "":
+            await channel.send(
+                f"Thanks for the follow {payload.data.user.name}! Please join our discord server: {conf_options[(payload.data.broadcaster.name).lower()]['DISCORD_LINK']}"
+            )
+        else:
+            await channel.send(f"Thanks for the follow {payload.data.user.name}!")
 
     @eventsubbot.event()
     async def event_eventsub_notification_stream_start(
