@@ -128,6 +128,16 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have a Facebook page.")
+    
+    @commands.command(aliases=['so'])
+    async def shoutout(self, ctx: commands.Context, user: twitchio.User):
+        """
+        !shoutout (!so) command
+        """
+        if not Checks.is_mod(self, ctx):
+            return
+        
+        await ctx.send(f"Check out @{user.display_name} over at twitch.tv/{user.name}")
 
     @commands.command(aliases=["roll"])
     async def dice(self, ctx: commands.Context):
