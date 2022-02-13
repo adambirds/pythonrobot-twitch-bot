@@ -94,6 +94,18 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have an Instagram page.")
+    
+    @commands.command()
+    async def twitter(self, ctx: commands.Context):
+        """
+        !twitter command
+        """
+        if conf_options[ctx.channel.name]["TWITTER_LINK"] != "":
+            await ctx.send(
+                f'Here is the link to my Twitter page: {conf_options[ctx.channel.name]["TWITTER_LINK"]}'
+            )
+        else:
+            await ctx.send(f"I don't currently have a Twitter page.")
 
     @commands.command(aliases=["roll"])
     async def dice(self, ctx: commands.Context):
