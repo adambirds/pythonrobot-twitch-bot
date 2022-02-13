@@ -1,0 +1,22 @@
+APP:
+  ACCESS_TOKEN: "irc_access_token" ## Get from https://twitchtokengenerator.com
+  CLIENT_SECRET: "client_secret" ## App Client Secret
+  CLIENT_ID: "client_id" ## App Client ID
+  SECRET_STRING: "any_secret_string"
+  CALLBACK_URL: "https://twitchbot.example.co.uk/callback"
+  ACCOUNTS: [
+    {
+      name: "channel1name", # Channel Name
+      id: 111111111 # Channel Broadcast ID
+    },
+    {
+      name: "channel2name", # Channel Name
+      id: 222222222 # Channel Broadcast ID
+    }
+  ]
+codingandgamingwithadam:
+  GITHUB_LINK: "https://github.com/adambirds"
+  DISCORD_LINK: "https://discord.gg/f5veJaa4ZX"
+pythonphil:
+  GITHUB_LINK: "https://github.com/GunnerShents"
+  DISCORD_LINK: "https://discord.gg/WTaUVMk5cE"
