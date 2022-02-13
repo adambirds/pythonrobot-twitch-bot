@@ -11,6 +11,16 @@ def process_config_file():
 
     return config_options
 
+# Define checks class.
+class Checks():
+    def is_owner(self, ctx):
+        return str(ctx.message.author.id) == self.client.config["OWNER_ID"]
+
+    def is_admin(self, ctx):
+        return str(ctx.message.author.id) in self.client.config["ADMIN_IDS"]
+
+    def is_mod(self, ctx):
+        return ctx.message.author.is_mod == 1
 
 # Define Bot class
 class Bot(commands.Bot):
