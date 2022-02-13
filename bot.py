@@ -70,6 +70,18 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have a Discord server.")
+    
+    @commands.command()
+    async def youtube(self, ctx: commands.Context):
+        """
+        !youtube command
+        """
+        if conf_options[ctx.channel.name]["YOUTUBE_LINK"] != "":
+            await ctx.send(
+                f'Here is the link to my YouTube channel: {conf_options[ctx.channel.name]["YOUTUBE_LINK"]}'
+            )
+        else:
+            await ctx.send(f"I don't currently have a YouTube channel.")
 
     @commands.command(aliases=["roll"])
     async def dice(self, ctx: commands.Context):
