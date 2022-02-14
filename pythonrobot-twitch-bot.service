@@ -1,0 +1,12 @@
+[Unit]
+Description=PythonRobot Twitch Bot Service
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/project/pythonrobot-twitch-bot/
+ExecStart=/project/pythonrobot-twitch-bot/pythonrobot-twitch-bot-venv/bin/python  /project/pythonrobot-twitch-bot/bot.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
