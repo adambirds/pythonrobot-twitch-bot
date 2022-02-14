@@ -14,3 +14,4 @@ pip3 install -r ../../requirements.txt
 ./install-shellcheck
 ./install-shfmt
 npm install
+mypy --install-types
