@@ -132,6 +132,18 @@ class Bot(commands.Bot):
         else:
             await ctx.send(f"I don't currently have a Facebook page.")
 
+    @commands.command()
+    async def website(self, ctx: commands.Context):
+        """
+        !website command
+        """
+        if conf_options[ctx.channel.name]["WEBSITE_LINK"] != "":
+            await ctx.send(
+                f'Here is the link to my website: {conf_options[ctx.channel.name]["WEBSITE_LINK"]}'
+            )
+        else:
+            await ctx.send(f"I don't currently have a website.")
+
     @commands.command(aliases=["so"])
     async def shoutout(self, ctx: commands.Context, user: twitchio.User):
         """
