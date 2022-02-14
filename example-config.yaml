@@ -15,18 +15,20 @@ APP:
     }
   ]
 codingandgamingwithadam:
-  GITHUB_LINK: "https://github.com/adambirds"
-  DISCORD_LINK: "https://discord.gg/f5veJaa4ZX"
-  YOUTUBE_LINK: ""
-  INSTAGRAM_LINK: ""
-  TWITTER_LINK: ""
-  FACEBOOK_LINK: ""
-  WEBSITE_LINK: ""
+  SOCIALS:
+    GITHUB: "https://github.com/adambirds"
+    DISCORD: "https://discord.gg/f5veJaa4ZX"
+    YOUTUBE: ""
+    INSTAGRAM: ""
+    TWITTER: ""
+    FACEBOOK: ""
+    WEBSITE: ""
 pythonphil:
-  GITHUB_LINK: "https://github.com/GunnerShents"
-  DISCORD_LINK: "https://discord.gg/WTaUVMk5cE"
-  YOUTUBE_LINK: ""
-  INSTAGRAM_LINK: ""
-  TWITTER_LINK: ""
-  FACEBOOK_LINK: ""
-  WEBSITE_LINK: ""
+  SOCIALS:
+    GITHUB: "https://github.com/GunnerShents"
+    DISCORD: "https://discord.gg/WTaUVMk5cE"
+    YOUTUBE: ""
+    INSTAGRAM: ""
+    TWITTER: ""
+    FACEBOOK: ""
+    WEBSITE: ""

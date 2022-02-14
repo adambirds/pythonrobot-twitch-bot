@@ -65,9 +65,9 @@ class Bot(commands.Bot):
         !github command
         """
         print(ctx.channel.name)
-        if conf_options[ctx.channel.name]["GITHUB_LINK"] != "":
+        if conf_options[ctx.channel.name]["SOCIALS"]["GITHUB"] != "":
             await ctx.send(
-                f'Here is my GitHub link: {conf_options[ctx.channel.name]["GITHUB_LINK"]}'
+                f'Here is my GitHub link: {conf_options[ctx.channel.name]["SOCIALS"]["GITHUB"]}'
             )
         else:
             await ctx.send(f"I don't currently have a GitHub account.")
@@ -77,9 +77,9 @@ class Bot(commands.Bot):
         """
         !discord command
         """
-        if conf_options[ctx.channel.name]["DISCORD_LINK"] != "":
+        if conf_options[ctx.channel.name]["SOCIALS"]["DISCORD"] != "":
             await ctx.send(
-                f'Here is the link to my Discord server: {conf_options[ctx.channel.name]["DISCORD_LINK"]}'
+                f'Here is the link to my Discord server: {conf_options[ctx.channel.name]["SOCIALS"]["DISCORD"]}'
             )
         else:
             await ctx.send(f"I don't currently have a Discord server.")
@@ -89,9 +89,9 @@ class Bot(commands.Bot):
         """
         !youtube command
         """
-        if conf_options[ctx.channel.name]["YOUTUBE_LINK"] != "":
+        if conf_options[ctx.channel.name]["SOCIALS"]["YOUTUBE"] != "":
             await ctx.send(
-                f'Here is the link to my YouTube channel: {conf_options[ctx.channel.name]["YOUTUBE_LINK"]}'
+                f'Here is the link to my YouTube channel: {conf_options[ctx.channel.name]["SOCIALS"]["YOUTUBE"]}'
             )
         else:
             await ctx.send(f"I don't currently have a YouTube channel.")
@@ -101,9 +101,9 @@ class Bot(commands.Bot):
         """
         !instagram command
         """
-        if conf_options[ctx.channel.name]["INSTAGRAM_LINK"] != "":
+        if conf_options[ctx.channel.name]["SOCIALS"]["INSTAGRAM"] != "":
             await ctx.send(
-                f'Here is the link to my Instagram page: {conf_options[ctx.channel.name]["INSTAGRAM_LINK"]}'
+                f'Here is the link to my Instagram page: {conf_options[ctx.channel.name]["SOCIALS"]["INSTAGRAM"]}'
             )
         else:
             await ctx.send(f"I don't currently have an Instagram page.")
@@ -113,9 +113,9 @@ class Bot(commands.Bot):
         """
         !twitter command
         """
-        if conf_options[ctx.channel.name]["TWITTER_LINK"] != "":
+        if conf_options[ctx.channel.name]["SOCIALS"]["TWITTER"] != "":
             await ctx.send(
-                f'Here is the link to my Twitter page: {conf_options[ctx.channel.name]["TWITTER_LINK"]}'
+                f'Here is the link to my Twitter page: {conf_options[ctx.channel.name]["SOCIALS"]["TWITTER"]}'
             )
         else:
             await ctx.send(f"I don't currently have a Twitter page.")
@@ -125,9 +125,9 @@ class Bot(commands.Bot):
         """
         !facebook command
         """
-        if conf_options[ctx.channel.name]["FACEBOOK_LINK"] != "":
+        if conf_options[ctx.channel.name]["SOCIALS"]["FACEBOOK"] != "":
             await ctx.send(
-                f'Here is the link to my Facebook page: {conf_options[ctx.channel.name]["FACEBOOK_LINK"]}'
+                f'Here is the link to my Facebook page: {conf_options[ctx.channel.name]["SOCIALS"]["FACEBOOK"]}'
             )
         else:
             await ctx.send(f"I don't currently have a Facebook page.")
@@ -137,12 +137,32 @@ class Bot(commands.Bot):
         """
         !website command
         """
-        if conf_options[ctx.channel.name]["WEBSITE_LINK"] != "":
+        if conf_options[ctx.channel.name]["SOCIALS"]["WEBSITE"] != "":
             await ctx.send(
-                f'Here is the link to my website: {conf_options[ctx.channel.name]["WEBSITE_LINK"]}'
+                f'Here is the link to my website: {conf_options[ctx.channel.name]["SOCIALS"]["WEBSITE"]}'
             )
         else:
             await ctx.send(f"I don't currently have a website.")
+
+    @commands.command()
+    async def socials(self, ctx: commands.Context):
+        """
+        !socials command
+        """
+        social: str
+        social_text = ""
+        for social in conf_options[ctx.channel.name]["SOCIALS"]:
+            if conf_options[ctx.channel.name]["SOCIALS"][social] != "":
+                print(social.capitalize())
+                social_text += social.capitalize()
+                social_text += ":"
+                social_text += " "
+                social_text += conf_options[ctx.channel.name]["SOCIALS"][social]
+                social_text += " "
+                social_text += "-"
+                social_text += " "
+
+        await ctx.send(social_text.rstrip(" - "))
 
     @commands.command(aliases=["so"])
     async def shoutout(self, ctx: commands.Context, user: twitchio.User):
@@ -189,9 +209,12 @@ if __name__ == "__main__":
         """
         print(f"{payload.data.user.name} followed {payload.data.broadcaster.name}")
         channel = bot.get_channel(payload.data.broadcaster.name)
-        if conf_options[(payload.data.broadcaster.name).lower()]["DISCORD_LINK"] != "":
+        if (
+            conf_options[(payload.data.broadcaster.name).lower()]["SOCIALS"]["DISCORD"]
+            != ""
+        ):
             await channel.send(
-                f"Thanks for the follow {payload.data.user.name}! Please join our discord server: {conf_options[(payload.data.broadcaster.name).lower()]['DISCORD_LINK']}"
+                f'Thanks for the follow {payload.data.user.name}! Please join our discord server: {conf_options[(payload.data.broadcaster.name).lower()]["SOCIALS"]["DISCORD"]}'
             )
         else:
             await channel.send(f"Thanks for the follow {payload.data.user.name}!")
