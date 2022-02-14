@@ -1,4 +1,5 @@
 # Import libraries
+from sys import prefix
 from twitchio.ext import commands, eventsub
 import twitchio
 import yaml
@@ -145,6 +146,11 @@ class Bot(commands.Bot):
         !dice (!roll) command
         """
         await ctx.send(f"You rolled a {random.randint(1,6)}")
+    
+    @commands.command(aliases=['commands'])
+    async def help(self, ctx: commands.Context):
+        command_list = self._prefix + f'-{self._prefix}'.join(self.commands.keys())
+        await ctx.send(command_list)
 
 
 if __name__ == "__main__":
