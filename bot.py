@@ -301,7 +301,7 @@ if __name__ == "__main__":
         except twitchio.HTTPException:
             pass
 
-    bot.loop.create_task(eventsub_client.listen(port=4000))
+    bot.loop.create_task(eventsub_client.listen(port=conf_options["APP"]["PORT"]))
     bot.loop.create_task(bot.connect())
     for channel in conf_options["APP"]["ACCOUNTS"]:
         eventsubbot.loop.create_task(subscribe_follows(channel["id"]))
