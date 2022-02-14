@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -eu
+
+python3 -m venv pythonrobot-twitch-bot-venv
+if [ -d pythonrobot-twitch-bot-venv/bin ]; then
+	source pythonrobot-twitch-bot-venv/bin/activate
+fi
+cd "$(dirname "$0")"
+
+pip3 install -r ../../requirements.txt
