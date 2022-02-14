@@ -1,11 +1,13 @@
 # Import libraries
 import random
+import sys
 from datetime import datetime
 from typing import Any, List
 
 import pytz
 import twitchio
 import yaml
+from aiohttp.web_runner import GracefulExit
 from twitchio.ext import commands, eventsub
 
 
@@ -305,4 +307,7 @@ if __name__ == "__main__":
         eventsubbot.loop.create_task(subscribe_follows(channel["id"]))
         eventsubbot.loop.create_task(subscribe_stream_starts(channel["id"]))
         eventsubbot.loop.create_task(subscribe_channel_raid(channel["id"]))
-    bot.loop.run_forever()
+    try:
+        bot.loop.run_forever()
+    except GracefulExit:
+        sys.exit(0)
