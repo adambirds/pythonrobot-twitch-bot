@@ -201,6 +201,15 @@ class Bot(commands.Bot):
         else:
             return
 
+    @commands.command()
+    async def getthisbot(self, ctx: commands.Context) -> None:
+        """
+        !getthisbot command
+        """
+        await ctx.send(
+            f'Do you want this bot on your channel? If so check out its GitHub: {conf_options["APP"]["BOT_GITHUB_LINK"]}'
+        )
+
     @commands.command(aliases=["commands"])
     async def help(self, ctx: commands.Context) -> None:
         command_list = self._prefix + f"-{self._prefix}".join(self.commands.keys())

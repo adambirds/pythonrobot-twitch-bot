@@ -4,6 +4,7 @@ APP:
   CLIENT_ID: "client_id" ## App Client ID
   SECRET_STRING: "any_secret_string"
   CALLBACK_URL: "https://twitchbot.example.co.uk/callback"
+  BOT_GITHUB_LINK: "https://github.com/adambirds/pythonrobot-twitch-bot"
   ACCOUNTS: [
       {
         name: "channel1name", # Channel Name
