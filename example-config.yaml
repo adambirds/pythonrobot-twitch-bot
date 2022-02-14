@@ -5,15 +5,15 @@ APP:
   SECRET_STRING: "any_secret_string"
   CALLBACK_URL: "https://twitchbot.example.co.uk/callback"
   ACCOUNTS: [
-    {
-      name: "channel1name", # Channel Name
-      id: 111111111 # Channel Broadcast ID
-    },
-    {
-      name: "channel2name", # Channel Name
-      id: 222222222 # Channel Broadcast ID
-    }
-  ]
+      {
+        name: "channel1name", # Channel Name
+        id: 111111111, # Channel Broadcast ID
+      },
+      {
+        name: "channel2name", # Channel Name
+        id: 222222222, # Channel Broadcast ID
+      },
+    ]
 codingandgamingwithadam:
   SOCIALS:
     GITHUB: "https://github.com/adambirds"

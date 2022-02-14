@@ -1,14 +1,16 @@
 # Import libraries
-from sys import prefix
-from twitchio.ext import commands, eventsub
-import twitchio
-import yaml
 import random
 from datetime import datetime
+from typing import Any, List
+
 import pytz
+import twitchio
+import yaml
+from twitchio.ext import commands, eventsub
+
 
 # Define function to process yaml config file
-def process_config_file():
+def process_config_file() -> Any:
     with open("config.yaml", "r") as stream:
         config_options = yaml.safe_load(stream)
 
@@ -17,33 +19,25 @@ def process_config_file():
 
 # Define checks class.
 class Checks:
-    def is_owner(self, ctx):
-        return str(ctx.message.author.id) == self.client.config["OWNER_ID"]
-
-    def is_admin(self, ctx):
-        return str(ctx.message.author.id) in self.client.config["ADMIN_IDS"]
-
-    def is_mod(self, ctx):
+    def is_mod(self, ctx: commands.Context) -> bool:
         return ctx.message.author.is_mod == 1
 
 
 # Define Bot class
 class Bot(commands.Bot):
-    def __init__(self, access_token, prefix, initial_channels):
+    def __init__(self, access_token: str, prefix: str, initial_channels: List[str]):
         """
         Tells the Bot class which token it should use, channels to connect to and prefix to use.
         """
-        super().__init__(
-            token=access_token, prefix=prefix, initial_channels=initial_channels
-        )
+        super().__init__(token=access_token, prefix=prefix, initial_channels=initial_channels)
 
-    async def event_ready(self):
+    async def event_ready(self) -> None:
         """
         Ptints who the bot is logged in as when ready.
         """
         print(f"Logged in as | {self.nick}")
 
-    async def event_message(self, message):
+    async def event_message(self, message: twitchio.Message) -> None:
         """
         Ignore messages sent by the bot and handle the commands.
         """
@@ -55,14 +49,14 @@ class Bot(commands.Bot):
         await self.handle_commands(message)
 
     @commands.command()
-    async def hello(self, ctx: commands.Context):
+    async def hello(self, ctx: commands.Context) -> None:
         """
         !hello command
         """
         await ctx.send(f"Hello {ctx.author.display_name}!")
 
     @commands.command()
-    async def github(self, ctx: commands.Context):
+    async def github(self, ctx: commands.Context) -> None:
         """
         !github command
         """
@@ -72,10 +66,10 @@ class Bot(commands.Bot):
                 f'Here is my GitHub link: {conf_options[ctx.channel.name]["SOCIALS"]["GITHUB"]}'
             )
         else:
-            await ctx.send(f"I don't currently have a GitHub account.")
+            await ctx.send("I don't currently have a GitHub account.")
 
     @commands.command()
-    async def discord(self, ctx: commands.Context):
+    async def discord(self, ctx: commands.Context) -> None:
         """
         !discord command
         """
@@ -84,10 +78,10 @@ class Bot(commands.Bot):
                 f'Here is the link to my Discord server: {conf_options[ctx.channel.name]["SOCIALS"]["DISCORD"]}'
             )
         else:
-            await ctx.send(f"I don't currently have a Discord server.")
+            await ctx.send("I don't currently have a Discord server.")
 
     @commands.command()
-    async def youtube(self, ctx: commands.Context):
+    async def youtube(self, ctx: commands.Context) -> None:
         """
         !youtube command
         """
@@ -96,10 +90,10 @@ class Bot(commands.Bot):
                 f'Here is the link to my YouTube channel: {conf_options[ctx.channel.name]["SOCIALS"]["YOUTUBE"]}'
             )
         else:
-            await ctx.send(f"I don't currently have a YouTube channel.")
+            await ctx.send("I don't currently have a YouTube channel.")
 
     @commands.command()
-    async def instagram(self, ctx: commands.Context):
+    async def instagram(self, ctx: commands.Context) -> None:
         """
         !instagram command
         """
@@ -108,10 +102,10 @@ class Bot(commands.Bot):
                 f'Here is the link to my Instagram page: {conf_options[ctx.channel.name]["SOCIALS"]["INSTAGRAM"]}'
             )
         else:
-            await ctx.send(f"I don't currently have an Instagram page.")
+            await ctx.send("I don't currently have an Instagram page.")
 
     @commands.command()
-    async def twitter(self, ctx: commands.Context):
+    async def twitter(self, ctx: commands.Context) -> None:
         """
         !twitter command
         """
@@ -120,10 +114,10 @@ class Bot(commands.Bot):
                 f'Here is the link to my Twitter page: {conf_options[ctx.channel.name]["SOCIALS"]["TWITTER"]}'
             )
         else:
-            await ctx.send(f"I don't currently have a Twitter page.")
+            await ctx.send("I don't currently have a Twitter page.")
 
     @commands.command()
-    async def facebook(self, ctx: commands.Context):
+    async def facebook(self, ctx: commands.Context) -> None:
         """
         !facebook command
         """
@@ -132,10 +126,10 @@ class Bot(commands.Bot):
                 f'Here is the link to my Facebook page: {conf_options[ctx.channel.name]["SOCIALS"]["FACEBOOK"]}'
             )
         else:
-            await ctx.send(f"I don't currently have a Facebook page.")
+            await ctx.send("I don't currently have a Facebook page.")
 
     @commands.command()
-    async def reddit(self, ctx: commands.Context):
+    async def reddit(self, ctx: commands.Context) -> None:
         """
         !reddit command
         """
@@ -144,10 +138,10 @@ class Bot(commands.Bot):
                 f'Here is the link to my Reddit: {conf_options[ctx.channel.name]["SOCIALS"]["REDDIT"]}'
             )
         else:
-            await ctx.send(f"I don't currently have a Reddit.")
+            await ctx.send("I don't currently have a Reddit.")
 
     @commands.command()
-    async def website(self, ctx: commands.Context):
+    async def website(self, ctx: commands.Context) -> None:
         """
         !website command
         """
@@ -156,10 +150,10 @@ class Bot(commands.Bot):
                 f'Here is the link to my website: {conf_options[ctx.channel.name]["SOCIALS"]["WEBSITE"]}'
             )
         else:
-            await ctx.send(f"I don't currently have a website.")
+            await ctx.send("I don't currently have a website.")
 
     @commands.command()
-    async def socials(self, ctx: commands.Context):
+    async def socials(self, ctx: commands.Context) -> None:
         """
         !socials command
         """
@@ -179,7 +173,7 @@ class Bot(commands.Bot):
         await ctx.send(social_text.rstrip(" - "))
 
     @commands.command(aliases=["so"])
-    async def shoutout(self, ctx: commands.Context, user: twitchio.User):
+    async def shoutout(self, ctx: commands.Context, user: twitchio.User) -> None:
         """
         !shoutout (!so) command
         """
@@ -189,28 +183,26 @@ class Bot(commands.Bot):
         await ctx.send(f"Check out @{user.display_name} over at twitch.tv/{user.name}")
 
     @commands.command(aliases=["roll"])
-    async def dice(self, ctx: commands.Context):
+    async def dice(self, ctx: commands.Context) -> None:
         """
         !dice (!roll) command
         """
         await ctx.send(f"You rolled a {random.randint(1,6)}")
 
     @commands.command(aliases=["date", "datetime"])
-    async def time(self, ctx: commands.Context, *, timezone: str = ""):
+    async def time(self, ctx: commands.Context, *, timezone: str = "") -> None:
         """
         !time command
         """
         timezone = timezone.replace(" ", "_")
         if timezone in pytz.all_timezones:
-            date_time = datetime.now(pytz.timezone(timezone)).strftime(
-                "%A %-dth %B %Y %H:%M"
-            )
+            date_time = datetime.now(pytz.timezone(timezone)).strftime("%A %-dth %B %Y %H:%M")
             await ctx.send(f"The date and time in {timezone} is {date_time}.")
         else:
             return
 
     @commands.command(aliases=["commands"])
-    async def help(self, ctx: commands.Context):
+    async def help(self, ctx: commands.Context) -> None:
         command_list = self._prefix + f"-{self._prefix}".join(self.commands.keys())
         await ctx.send(command_list)
 
@@ -231,16 +223,13 @@ if __name__ == "__main__":
     )
 
     @eventsubbot.event()
-    async def event_eventsub_notification_follow(payload: eventsub.ChannelFollowData):
+    async def event_eventsub_notification_follow(payload: eventsub.ChannelFollowData) -> None:
         """
         Reacts to receicing a new channel follow event. It will respond in chat thanking the follower and giving them the discord link.
         """
         print(f"{payload.data.user.name} followed {payload.data.broadcaster.name}")
         channel = bot.get_channel(payload.data.broadcaster.name)
-        if (
-            conf_options[(payload.data.broadcaster.name).lower()]["SOCIALS"]["DISCORD"]
-            != ""
-        ):
+        if conf_options[(payload.data.broadcaster.name).lower()]["SOCIALS"]["DISCORD"] != "":
             await channel.send(
                 f'Thanks for the follow {payload.data.user.name}! Please join our discord server: {conf_options[(payload.data.broadcaster.name).lower()]["SOCIALS"]["DISCORD"]}'
             )
@@ -250,7 +239,7 @@ if __name__ == "__main__":
     @eventsubbot.event()
     async def event_eventsub_notification_stream_start(
         payload: eventsub.StreamOnlineData,
-    ):
+    ) -> None:
         """
         Reacts to receiving a stream start event.
         """
@@ -262,7 +251,7 @@ if __name__ == "__main__":
         conf_options["APP"]["CALLBACK_URL"],
     )
 
-    async def subscribe_follows(channel_id):
+    async def subscribe_follows(channel_id: int) -> None:
         """
         Subscribes to new channel follow events.
         """
@@ -271,7 +260,7 @@ if __name__ == "__main__":
         except twitchio.HTTPException:
             pass
 
-    async def subscribe_stream_starts(channel_id):
+    async def subscribe_stream_starts(channel_id: int) -> None:
         """
         Subscribes to stream start events.
         """
