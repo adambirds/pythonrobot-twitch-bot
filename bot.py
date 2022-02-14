@@ -4,6 +4,8 @@ from twitchio.ext import commands, eventsub
 import twitchio
 import yaml
 import random
+from datetime import datetime
+import pytz
 
 # Define function to process yaml config file
 def process_config_file():
@@ -131,7 +133,7 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have a Facebook page.")
-    
+
     @commands.command()
     async def reddit(self, ctx: commands.Context):
         """
@@ -192,6 +194,20 @@ class Bot(commands.Bot):
         !dice (!roll) command
         """
         await ctx.send(f"You rolled a {random.randint(1,6)}")
+
+    @commands.command(aliases=["date", "datetime"])
+    async def time(self, ctx: commands.Context, *, timezone: str = ""):
+        """
+        !time command
+        """
+        timezone = timezone.replace(" ", "_")
+        if timezone in pytz.all_timezones:
+            date_time = datetime.now(pytz.timezone(timezone)).strftime(
+                "%A %-dth %B %Y %H:%M"
+            )
+            await ctx.send(f"The date and time in {timezone} is {date_time}.")
+        else:
+            return
 
     @commands.command(aliases=["commands"])
     async def help(self, ctx: commands.Context):
