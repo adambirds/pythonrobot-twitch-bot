@@ -254,6 +254,18 @@ if __name__ == "__main__":
         """
         print(payload.data.id)
 
+    @eventsubbot.event()
+    async def event_eventsub_notification_channel_raid(
+        payload: eventsub.ChannelRaidData,
+    ) -> None:
+        """
+        Reacts to receiving a channel raid event.
+        """
+        channel = bot.get_channel(payload.receiver.name)
+        await channel.send(
+            f"Thanks for the raid {payload.raider.display_name} who has just brought with them {payload.viewer_count} viewers."
+        )
+
     eventsub_client = eventsub.EventSubClient(
         eventsubbot,
         conf_options["APP"]["SECRET_STRING"],
@@ -278,9 +290,19 @@ if __name__ == "__main__":
         except twitchio.HTTPException:
             pass
 
+    async def subscribe_channel_raid(channel_id: int) -> None:
+        """
+        Subscribes to channel raid events.
+        """
+        try:
+            await eventsub_client.subscribe_channel_raid(channel_id)
+        except twitchio.HTTPException:
+            pass
+
     bot.loop.create_task(eventsub_client.listen(port=4000))
     bot.loop.create_task(bot.connect())
     for channel in conf_options["APP"]["ACCOUNTS"]:
         eventsubbot.loop.create_task(subscribe_follows(channel["id"]))
         eventsubbot.loop.create_task(subscribe_stream_starts(channel["id"]))
+        eventsubbot.loop.create_task(subscribe_channel_raid(channel["id"]))
     bot.loop.run_forever()
