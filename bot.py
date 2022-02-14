@@ -242,7 +242,7 @@ if __name__ == "__main__":
         channel = bot.get_channel(payload.data.broadcaster.name)
         if conf_options[(payload.data.broadcaster.name).lower()]["SOCIALS"]["DISCORD"] != "":
             await channel.send(
-                f'Thanks for the follow {payload.data.user.name}! Please join our discord server: {conf_options[(payload.data.broadcaster.name).lower()]["SOCIALS"]["DISCORD"]}'
+                f'Thanks for the follow @{payload.data.user.name}! Please join our discord server: {conf_options[(payload.data.broadcaster.name).lower()]["SOCIALS"]["DISCORD"]}'
             )
         else:
             await channel.send(f"Thanks for the follow {payload.data.user.name}!")
@@ -265,7 +265,7 @@ if __name__ == "__main__":
         """
         channel = bot.get_channel(payload.receiver.name)
         await channel.send(
-            f"Thanks for the raid {payload.raider.display_name} who has just brought with them {payload.viewer_count} viewers."
+            f"Thanks for the raid @{payload.raider.display_name} who has just brought with them {payload.viewer_count} viewers."
         )
 
     eventsub_client = eventsub.EventSubClient(
