@@ -131,6 +131,18 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have a Facebook page.")
+    
+    @commands.command()
+    async def reddit(self, ctx: commands.Context):
+        """
+        !reddit command
+        """
+        if conf_options[ctx.channel.name]["SOCIALS"]["REDDIT"] != "":
+            await ctx.send(
+                f'Here is the link to my Reddit: {conf_options[ctx.channel.name]["SOCIALS"]["REDDIT"]}'
+            )
+        else:
+            await ctx.send(f"I don't currently have a Reddit.")
 
     @commands.command()
     async def website(self, ctx: commands.Context):
