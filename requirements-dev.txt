@@ -1,0 +1,15 @@
+twitchio
+pyyaml
+pytz
+
+## Zulint
+
+https://github.com/zulip/zulint/archive/6cc46d23906757895e917cc75e231f81f824a31d.zip#egg=zulint==0.0.1
+
+## Linters
+
+black
+isort
+gitlint
+pyflakes
+mypy
