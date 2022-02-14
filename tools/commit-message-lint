@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Lint all commit messages that are newer than upstream/master if running
+# locally or the commits in the push or PR if in CircleCI.
+
+# The rules can be found in /.gitlint
+
+if [[ "
+$(git remote -v)
+" =~ '
+'([^[:space:]]*)[[:space:]]*(https://github\.com/|ssh://git@github\.com/|git@github\.com:)adambirds/pythonrobot-twitch-bot(\.git|/)?\ \(fetch\)'
+' ]]; then
+	range="${BASH_REMATCH[1]}/main..HEAD"
+else
+	range="upstream/main..HEAD"
+fi
+
+commits=$(git log "$range" | wc -l)
+if [ "$commits" -gt 0 ]; then
+	# Only run gitlint with non-empty commit lists, to avoid a printed
+	# warning.
+	gitlint --commits "$range"
+fi

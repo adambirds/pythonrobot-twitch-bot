@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -eu
+
+apt install npm -y
+python3 -m venv pythonrobot-twitch-bot-venv
+if [ -d pythonrobot-twitch-bot-venv/bin ]; then
+	source pythonrobot-twitch-bot-venv/bin/activate
+fi
+cd "$(dirname "$0")"
+
+pip3 install build
+pip3 install wheel
+pip3 install -r ../../requirements.txt
+./install-shellcheck
+./install-shfmt
+npm install

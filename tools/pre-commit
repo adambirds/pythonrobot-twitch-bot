@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# This hook runs the Zulip code linter ./tools/lint.
+
+# Messages from the linter will be printed out to the screen.
+#
+
+changed_files=()
+while read -r -d '' f; do
+	changed_files+=("$f")
+done < <(git diff -z --cached --name-only --diff-filter=ACM)
+if [ ${#changed_files} -eq 0 ]; then
+	echo "No changed files to lint."
+	exit 0
+fi
+
+./tools/lint --skip=gitlint "${changed_files[@]}"
+
+exit 0

@@ -1,0 +1,26 @@
+{
+  "name": "prettier",
+  "version": "2.5.1",
+  "description": "[![code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![mypy coverage](https://img.shields.io/badge/mypy-100%25-green.svg)](https://github.com/python/mypy)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "prettier": "^2.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adambirds/pythonrobot-twitch-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adambirds/pythonrobot-twitch-bot/issues"
+  },
+  "homepage": "https://github.com/adambirds/pythonrobot-twitch-bot#readme"
+}
