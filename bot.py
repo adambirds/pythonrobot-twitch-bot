@@ -12,8 +12,9 @@ def process_config_file():
 
     return config_options
 
+
 # Define checks class.
-class Checks():
+class Checks:
     def is_owner(self, ctx):
         return str(ctx.message.author.id) == self.client.config["OWNER_ID"]
 
@@ -22,6 +23,7 @@ class Checks():
 
     def is_mod(self, ctx):
         return ctx.message.author.is_mod == 1
+
 
 # Define Bot class
 class Bot(commands.Bot):
@@ -81,7 +83,7 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have a Discord server.")
-    
+
     @commands.command()
     async def youtube(self, ctx: commands.Context):
         """
@@ -93,7 +95,7 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have a YouTube channel.")
-    
+
     @commands.command()
     async def instagram(self, ctx: commands.Context):
         """
@@ -105,7 +107,7 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have an Instagram page.")
-    
+
     @commands.command()
     async def twitter(self, ctx: commands.Context):
         """
@@ -117,7 +119,7 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have a Twitter page.")
-    
+
     @commands.command()
     async def facebook(self, ctx: commands.Context):
         """
@@ -129,15 +131,15 @@ class Bot(commands.Bot):
             )
         else:
             await ctx.send(f"I don't currently have a Facebook page.")
-    
-    @commands.command(aliases=['so'])
+
+    @commands.command(aliases=["so"])
     async def shoutout(self, ctx: commands.Context, user: twitchio.User):
         """
         !shoutout (!so) command
         """
         if not Checks.is_mod(self, ctx):
             return
-        
+
         await ctx.send(f"Check out @{user.display_name} over at twitch.tv/{user.name}")
 
     @commands.command(aliases=["roll"])
@@ -146,10 +148,10 @@ class Bot(commands.Bot):
         !dice (!roll) command
         """
         await ctx.send(f"You rolled a {random.randint(1,6)}")
-    
-    @commands.command(aliases=['commands'])
+
+    @commands.command(aliases=["commands"])
     async def help(self, ctx: commands.Context):
-        command_list = self._prefix + f'-{self._prefix}'.join(self.commands.keys())
+        command_list = self._prefix + f"-{self._prefix}".join(self.commands.keys())
         await ctx.send(command_list)
 
 
