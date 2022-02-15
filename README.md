@@ -4,6 +4,11 @@
 
 Developed for the channels of [PythonPhil](https://twitch.tv/pythonphil) and [CodingAndGamingWithAdam](https://twitch.tv/codingandgamingwithadam).
 
+## Support
+For support using this bot, please join our [official support server](https://discord.gg/f5veJaa4ZX) on [Discord](https://discord.com).
+
+[![discord](https://img.shields.io/discord/941885906443468880?color=%237289DA&label=Coding%20With%20Adam&logo=discord&logoColor=white)](https://discord.gg/f5veJaa4ZX)
+
 ## Source
 The source code can be found [here](https://github.com/adambirds/pythonrobot-twitch-bot).
 
