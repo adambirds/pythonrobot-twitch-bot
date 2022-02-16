@@ -98,7 +98,7 @@ The bot supports the following commands:
 | !github | | `!github` | Everyone | The streamers github link. |
 | !hello | | `!hello` | Everyone | The bot replies hello |
 | !help | !commands | `!help` | Everyone | The bot replies with the link to these commands. |
-| !instagram | | `!instagram` | Everyone | The streamers instagram link. |
+| !instagram | !ig | `!instagram` | Everyone | The streamers instagram link. |
 | !quote | | `!quote` | Everyone | The bot replies with a random quote. |
 | !reddit | | `!reddit` | Everyone | The streamers reddit link. |
 | !shoutout | !so | `!shoutout pythonphil` | Moderators | Shoutout a fellow streamer |
