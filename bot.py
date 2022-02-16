@@ -158,6 +158,18 @@ class Bot(commands.Bot):
         else:
             await ctx.send("I don't currently have a website.")
 
+    @commands.command()
+    async def tiktok(self, ctx: commands.Context) -> None:
+        """
+        !tiktok command
+        """
+        if conf_options[ctx.channel.name]["SOCIALS"]["TIKTOK"] != "":
+            await ctx.send(
+                f'Here is the link to my tiktok: {conf_options[ctx.channel.name]["SOCIALS"]["TIKTOK"]}'
+            )
+        else:
+            await ctx.send("I don't currently have tiktok.")
+
     @commands.command(aliases="links")
     async def socials(self, ctx: commands.Context) -> None:
         """
