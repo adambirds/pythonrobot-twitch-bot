@@ -122,7 +122,7 @@ class Bot(commands.Bot):
         else:
             await ctx.send("I don't currently have a Twitter page.")
 
-    @commands.command()
+    @commands.command(aliases=["fb"])
     async def facebook(self, ctx: commands.Context) -> None:
         """
         !facebook command
