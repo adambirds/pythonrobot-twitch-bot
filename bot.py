@@ -214,6 +214,9 @@ class Bot(commands.Bot):
 
     @commands.command(aliases=["commands"])
     async def help(self, ctx: commands.Context) -> None:
+        """
+        !help (!commands) command
+        """
         await ctx.send(
             f"You can the list of commands which this bot supports here: {conf_options['APP']['BOT_COMMANDS_LINK']}."
         )
