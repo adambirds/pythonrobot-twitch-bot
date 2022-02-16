@@ -241,6 +241,26 @@ class Bot(commands.Bot):
             f"You can the list of commands which this bot supports here: {conf_options['APP']['BOT_COMMANDS_LINK']}."
         )
 
+    @commands.command(name="8ball")
+    async def eight_ball(self, ctx: commands.Context, *, question: str = "") -> None:
+        """
+        !8ball command
+        """
+        POSSIBLE_ANSWERS = [
+            "Of Course",
+            "Yes",
+            "No",
+            "Of Course Not",
+            "Definitely",
+            "Definitely Not",
+        ]
+        if question != "":
+            list_length = len(POSSIBLE_ANSWERS)
+            answer = POSSIBLE_ANSWERS[random.randint(0, list_length - 1)]
+            await ctx.send(f"Magic 8ball says: {answer}!")
+        else:
+            return
+
 
 if __name__ == "__main__":
     conf_options = process_config_file()
