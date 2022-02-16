@@ -214,8 +214,9 @@ class Bot(commands.Bot):
 
     @commands.command(aliases=["commands"])
     async def help(self, ctx: commands.Context) -> None:
-        command_list = self._prefix + f"-{self._prefix}".join(self.commands.keys())
-        await ctx.send(command_list)
+        await ctx.send(
+            f"You can the list of commands which this bot supports here: {conf_options['APP']['BOT_COMMANDS_LINK']}."
+        )
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ APP:
   CALLBACK_URL: "https://twitchbot.example.co.uk/callback"
   PORT: 4000
   BOT_GITHUB_LINK: "https://github.com/adambirds/pythonrobot-twitch-bot"
+  BOT_COMMANDS_LINK: "https://github.com/adambirds/pythonrobot-twitch-bot#commands"
   ACCOUNTS: [
       {
         name: "channel1name", # Channel Name
