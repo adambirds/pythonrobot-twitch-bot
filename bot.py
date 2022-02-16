@@ -158,7 +158,7 @@ class Bot(commands.Bot):
         else:
             await ctx.send("I don't currently have a website.")
 
-    @commands.command()
+    @commands.command(aliases="links")
     async def socials(self, ctx: commands.Context) -> None:
         """
         !socials command
