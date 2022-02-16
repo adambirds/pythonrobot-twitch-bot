@@ -114,7 +114,7 @@ The bot supports the following commands:
 The bot also currently reacts to the following events:
 
 - New Follower - The bot will thank the follower and if the stream has a discord, give them the link.
-- Channel Raid - The bot will shout the raider, thank them, and announce how many views they brought with them.
+- Channel Raid - The bot will shoutout the raider, thank them, and announce how many views they brought with them.
 
 ## License
 
