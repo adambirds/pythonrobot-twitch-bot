@@ -194,7 +194,7 @@ class Bot(commands.Bot):
     @commands.command(aliases=["date", "datetime"])
     async def time(self, ctx: commands.Context, *, timezone: str = "") -> None:
         """
-        !time command
+        !time (!date) (!datetime) command
         """
         timezone = timezone.replace(" ", "_")
         if timezone in pytz.all_timezones:
