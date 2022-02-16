@@ -104,6 +104,7 @@ The bot supports the following commands:
 | !reddit | | `!reddit` | Everyone | The streamers reddit link. |
 | !shoutout | !so | `!shoutout pythonphil` | Moderators | Shoutout a fellow streamer |
 | !socials | !links | `!socials` | Everyone | The streamers social mnedia links. |
+| !tiktok | | `!tiktok` | Everyone | The streamers tiktok link. |
 | !time | !date , !datetime | `!time Europe/London` | Everyone | Current time anywhere in world |
 | !twitter | | `!twitter` | Everyone | The streamers twitter link. |
 | !website | | `!website` | Everyone | The streamers website link. |
