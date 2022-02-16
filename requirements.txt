@@ -1,3 +1,4 @@
 twitchio
 pyyaml
 pytz
+requests

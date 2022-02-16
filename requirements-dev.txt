@@ -1,6 +1,7 @@
 twitchio
 pyyaml
 pytz
+requests
 
 ## Zulint
 

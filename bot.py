@@ -3,8 +3,10 @@ import random
 import sys
 from datetime import datetime
 from typing import Any, List
+from urllib.error import HTTPError
 
 import pytz
+import requests
 import twitchio
 import yaml
 from aiohttp.web_runner import GracefulExit
@@ -27,6 +29,8 @@ class Checks:
 
 # Define Bot class
 class Bot(commands.Bot):
+    QUOTES_API = "https://api.quotable.io/random"
+
     def __init__(self, access_token: str, prefix: str, initial_channels: List[str]):
         """
         Tells the Bot class which token it should use, channels to connect to and prefix to use.
@@ -211,6 +215,22 @@ class Bot(commands.Bot):
         await ctx.send(
             f'Do you want this bot on your channel? If so check out its GitHub: {conf_options["APP"]["BOT_GITHUB_LINK"]}'
         )
+
+    @commands.command()
+    async def quote(self, ctx: commands.Context) -> None:
+        """
+        !quote command
+        """
+        try:
+            response = requests.get(self.QUOTES_API)
+            response.raise_for_status()
+        except HTTPError:
+            return
+        except Exception:
+            return
+
+        payload = response.json()
+        await ctx.send(f"{payload['author']}: \"{payload['content']}\"")
 
     @commands.command(aliases=["commands"])
     async def help(self, ctx: commands.Context) -> None:
