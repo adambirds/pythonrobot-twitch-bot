@@ -98,7 +98,7 @@ class Bot(commands.Bot):
         else:
             await ctx.send("I don't currently have a YouTube channel.")
 
-    @commands.command(aliases="ig")
+    @commands.command(aliases=["ig", "insta"])
     async def instagram(self, ctx: commands.Context) -> None:
         """
         !instagram command
