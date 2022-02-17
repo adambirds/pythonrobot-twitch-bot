@@ -342,8 +342,11 @@ if __name__ == "__main__":
         """
         try:
             await eventsub_client.subscribe_channel_follows(channel_id)
-        except twitchio.HTTPException:
-            pass
+        except twitchio.HTTPException as err:
+            if err.status == 409:
+                pass
+            else:
+                raise
 
     async def subscribe_stream_starts(channel_id: int) -> None:
         """
@@ -351,8 +354,11 @@ if __name__ == "__main__":
         """
         try:
             await eventsub_client.subscribe_channel_stream_start(channel_id)
-        except twitchio.HTTPException:
-            pass
+        except twitchio.HTTPException as err:
+            if err.status == 409:
+                pass
+            else:
+                raise
 
     async def subscribe_channel_raid(channel_id: int) -> None:
         """
@@ -360,8 +366,11 @@ if __name__ == "__main__":
         """
         try:
             await eventsub_client.subscribe_channel_raid(to_broadcaster=channel_id)
-        except twitchio.HTTPException:
-            pass
+        except twitchio.HTTPException as err:
+            if err.status == 409:
+                pass
+            else:
+                raise
 
     bot.loop.create_task(eventsub_client.listen(port=conf_options["APP"]["PORT"]))
     bot.loop.create_task(bot.connect())
