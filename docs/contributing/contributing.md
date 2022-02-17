@@ -30,7 +30,7 @@ tools/setup-git-repo
 and
 
 ```
-source pythonrobot-twitch-bot/bin/activate
+source pythonrobot-twitch-bot-venv/bin/activate
 ```
 
 The `tools/setup-git-repo` command will setup some commit hooks to run our linters on any changed files before
