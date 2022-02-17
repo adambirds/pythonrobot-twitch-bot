@@ -313,15 +313,21 @@ if __name__ == "__main__":
         print(payload.data.id)
 
     @eventsubbot.event()
-    async def event_eventsub_notification_channel_raid(
+    async def event_eventsub_notification_raid(
         payload: eventsub.ChannelRaidData,
     ) -> None:
         """
         Reacts to receiving a channel raid event.
         """
-        channel = bot.get_channel(payload.receiver.name)
+
+        raider = await payload.data.raider.fetch()
+        reciever = await payload.data.reciever.fetch()
+        print(
+            f"{raider.display_name} raided {reciever.display_name} with {payload.data.viewer_count} viewers."
+        )
+        channel = bot.get_channel(payload.data.reciever.name)
         await channel.send(
-            f"Thanks for the raid @{payload.raider.display_name} who has just brought with them {payload.viewer_count} viewers."
+            f"Thanks for the raid @{raider.display_name} who has just brought with them {payload.data.viewer_count} viewers."
         )
 
     eventsub_client = eventsub.EventSubClient(
@@ -353,7 +359,7 @@ if __name__ == "__main__":
         Subscribes to channel raid events.
         """
         try:
-            await eventsub_client.subscribe_channel_raid(channel_id)
+            await eventsub_client.subscribe_channel_raid(to_broadcaster=channel_id)
         except twitchio.HTTPException:
             pass
 
