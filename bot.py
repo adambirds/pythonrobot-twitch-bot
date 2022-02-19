@@ -201,7 +201,7 @@ class Bot(commands.Bot):
         """
         !dice (!roll) command
         """
-        await ctx.send(f"You rolled a {random.randint(1,6)}")
+        await ctx.send(f"You rolled a {random.randint(1,6)}.")
 
     @commands.command(aliases=["date", "datetime"])
     async def time(self, ctx: commands.Context, *, timezone: str = "") -> None:
