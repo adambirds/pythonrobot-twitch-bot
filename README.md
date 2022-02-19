@@ -100,6 +100,7 @@ The bot supports the following commands:
 | !hello | | `!hello` | Everyone | The bot replies hello |
 | !help | !commands | `!help` | Everyone | The bot replies with the link to these commands. |
 | !instagram | !ig , !insta | `!instagram` | Everyone | The streamers instagram link. |
+| !pycheatsheet | | `!pycheatsheet` | Everyone | The bot replies with the link to a Python cheat sheet. |
 | !quote | | `!quote` | Everyone | The bot replies with a random quote. |
 | !reddit | | `!reddit` | Everyone | The streamers reddit link. |
 | !shoutout | !so | `!shoutout pythonphil` | Moderators | Shoutout a fellow streamer |

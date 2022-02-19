@@ -249,6 +249,15 @@ class Bot(commands.Bot):
             f"You can the list of commands which this bot supports here: {conf_options['APP']['BOT_COMMANDS_LINK']}."
         )
 
+    @commands.command()
+    async def pycheatsheet(self, ctx: commands.Context) -> None:
+        """
+        !pycheatsheet command
+        """
+        await ctx.send(
+            "Here is an awesome Python cheat sheet: https://learnxinyminutes.com/docs/python/."
+        )
+
     @commands.command(name="8ball")
     async def eight_ball(self, ctx: commands.Context, *, question: str = "") -> None:
         """
