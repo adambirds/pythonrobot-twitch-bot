@@ -7,6 +7,12 @@ APP:
   PORT: 4000
   BOT_GITHUB_LINK: "https://github.com/adambirds/pythonrobot-twitch-bot"
   BOT_COMMANDS_LINK: "https://github.com/adambirds/pythonrobot-twitch-bot#commands"
+  DATABASE:
+    DBUSER: ""
+    DBNAME: ""
+    DBHOST: "127.0.0.1"
+    DBPASS: ""
+    DBPORT: 5432
   ACCOUNTS: [
       {
         name: "channel1name", # Channel Name
