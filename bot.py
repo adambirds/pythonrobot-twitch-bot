@@ -180,13 +180,9 @@ class Bot(commands.Bot):
         for social in conf_options[ctx.channel.name]["SOCIALS"]:
             if conf_options[ctx.channel.name]["SOCIALS"][social] != "":
                 print(social.capitalize())
-                social_text += social.capitalize()
-                social_text += ":"
-                social_text += " "
-                social_text += conf_options[ctx.channel.name]["SOCIALS"][social]
-                social_text += " "
-                social_text += "-"
-                social_text += " "
+                social_text += (
+                    f'{social.capitalize()}: {conf_options[ctx.channel.name]["SOCIALS"][social]} - '
+                )
 
         await ctx.send(social_text.rstrip(" - "))
 
