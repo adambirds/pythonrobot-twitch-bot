@@ -2,8 +2,9 @@
 import os
 import sys
 import traceback
-from typing import Any, List
+from typing import Any, Dict, List
 
+import asyncpg
 import twitchio
 import yaml
 from aiohttp.web_runner import GracefulExit
@@ -28,11 +29,28 @@ class Checks:
 class Bot(commands.Bot):
     QUOTES_API = "https://api.quotable.io/random"
 
-    def __init__(self, access_token: str, prefix: str, initial_channels: List[str]):
+    def __init__(
+        self,
+        access_token: str,
+        prefix: str,
+        initial_channels: List[str],
+        conf_options: Dict[str, Any],
+    ):
         """
         Tells the Bot class which token it should use, channels to connect to and prefix to use.
         """
+        self.conf_options = conf_options
         super().__init__(token=access_token, prefix=prefix, initial_channels=initial_channels)
+
+    async def ainit(self) -> None:
+        database_config = self.conf_options["APP"]["DATABASE"]
+        self.conn = await asyncpg.connect(
+            user=database_config["DBUSER"],
+            password=database_config["DBPASS"],
+            database=database_config["DBNAME"],
+            host=database_config["DBHOST"],
+            port=database_config["DBPORT"],
+        )
 
 
 if __name__ == "__main__":
@@ -41,9 +59,11 @@ if __name__ == "__main__":
     for channel in conf_options["APP"]["ACCOUNTS"]:
         channel_names.append("#" + channel["name"])
     bot = Bot(
-        access_token=conf_options["APP"]["ACCESS_TOKEN"], prefix="!", initial_channels=channel_names
+        access_token=conf_options["APP"]["ACCESS_TOKEN"],
+        prefix="!",
+        initial_channels=channel_names,
+        conf_options=conf_options,
     )
-    bot.conf_options = conf_options
 
     for filename in os.listdir("./modules/cogs/"):
         if filename.endswith(".py"):
@@ -142,6 +162,7 @@ if __name__ == "__main__":
                 raise
 
     bot.loop.create_task(eventsub_client.listen(port=conf_options["APP"]["PORT"]))
+    bot.loop.create_task(bot.ainit())
     bot.loop.create_task(bot.connect())
     for channel in conf_options["APP"]["ACCOUNTS"]:
         eventsubbot.loop.create_task(subscribe_follows(channel["id"]))
