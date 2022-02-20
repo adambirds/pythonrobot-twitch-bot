@@ -162,3 +162,7 @@ node_modules/
 # Exclude
 
 !tools/lib/
+
+# Exclude
+
+.vscode/
