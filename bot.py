@@ -7,6 +7,7 @@ from typing import Any, Dict, List
 import asyncpg
 import twitchio
 import yaml
+from aiohttp import ClientSession
 from aiohttp.web_runner import GracefulExit
 from twitchio.ext import commands, eventsub
 
@@ -51,6 +52,7 @@ class Bot(commands.Bot):
             host=database_config["DBHOST"],
             port=database_config["DBPORT"],
         )
+        self.session = ClientSession()
 
 
 if __name__ == "__main__":

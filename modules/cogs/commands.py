@@ -1,9 +1,7 @@
 import random
 from datetime import datetime
-from urllib.error import HTTPError
 
 import pytz
-import requests
 from twitchio.ext import commands
 
 
@@ -174,16 +172,9 @@ class CommandsCog(commands.Cog):
         """
         !quote command
         """
-        try:
-            response = requests.get(self.QUOTES_API)
-            response.raise_for_status()
-        except HTTPError:
-            return
-        except Exception:
-            return
-
-        payload = response.json()
-        await ctx.send(f"{payload['author']}: \"{payload['content']}\"")
+        async with self.bot.session.get(self.bot.QUOTES_API) as r:
+            json_data = await r.json(content_type="application/json")
+        await ctx.send(f"{json_data['author']}: \"{json_data['content']}\"")
 
     @commands.command(aliases=["commands"])
     async def help(self, ctx: commands.Context) -> None:
