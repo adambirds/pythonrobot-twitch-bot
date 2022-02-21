@@ -121,10 +121,12 @@ class SocialCommandsCog(commands.Cog):
         """
         social: str
         social_text = ""
-        for social in self.bot.conf_options[ctx.channel.name]["SOCIALS"]:
-            if self.bot.conf_options[ctx.channel.name]["SOCIALS"][social] != "":
+        socials = self.bot.conf_options[ctx.channel.name]["SOCIALS"]
+        socials = {k: socials[k] for k in sorted(socials)}
+        for social in socials:
+            if socials[social] != "":
                 print(social.capitalize())
-                social_text += f'{social.capitalize()}: {self.bot.conf_options[ctx.channel.name]["SOCIALS"][social]} - '
+                social_text += f"{social.capitalize()}: {socials[social]} - "
         if social_text != "":
             await ctx.send(social_text.rstrip(" - "))
         else:
