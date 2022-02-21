@@ -20,12 +20,6 @@ def process_config_file() -> Any:
     return config_options
 
 
-# Define checks class.
-class Checks:
-    def is_mod(self, ctx: commands.Context) -> bool:
-        return ctx.message.author.is_mod == 1
-
-
 # Define Bot class
 class Bot(commands.Bot):
     QUOTES_API = "https://api.quotable.io/random"
