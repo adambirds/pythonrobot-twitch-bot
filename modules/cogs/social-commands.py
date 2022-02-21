@@ -16,7 +16,7 @@ class SocialCommandsCog(commands.Cog):
                 f'Here is my GitHub link: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["GITHUB"]}'
             )
         else:
-            await ctx.send("I don't currently have a GitHub account.")
+            return
 
     @commands.command()
     async def discord(self, ctx: commands.Context) -> None:
@@ -28,7 +28,7 @@ class SocialCommandsCog(commands.Cog):
                 f'Here is the link to my Discord server: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["DISCORD"]}'
             )
         else:
-            await ctx.send("I don't currently have a Discord server.")
+            return
 
     @commands.command(aliases=["ig", "insta"])
     async def instagram(self, ctx: commands.Context) -> None:
@@ -40,7 +40,7 @@ class SocialCommandsCog(commands.Cog):
                 f'Here is the link to my Instagram page: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["INSTAGRAM"]}'
             )
         else:
-            await ctx.send("I don't currently have an Instagram page.")
+            return
 
     @commands.command()
     async def youtube(self, ctx: commands.Context) -> None:
@@ -52,7 +52,7 @@ class SocialCommandsCog(commands.Cog):
                 f'Here is the link to my YouTube channel: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["YOUTUBE"]}'
             )
         else:
-            await ctx.send("I don't currently have a YouTube channel.")
+            return
 
     @commands.command()
     async def twitter(self, ctx: commands.Context) -> None:
@@ -64,7 +64,7 @@ class SocialCommandsCog(commands.Cog):
                 f'Here is the link to my Twitter page: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["TWITTER"]}'
             )
         else:
-            await ctx.send("I don't currently have a Twitter page.")
+            return
 
     @commands.command(aliases=["fb"])
     async def facebook(self, ctx: commands.Context) -> None:
@@ -76,7 +76,7 @@ class SocialCommandsCog(commands.Cog):
                 f'Here is the link to my Facebook page: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["FACEBOOK"]}'
             )
         else:
-            await ctx.send("I don't currently have a Facebook page.")
+            return
 
     @commands.command()
     async def reddit(self, ctx: commands.Context) -> None:
@@ -88,7 +88,7 @@ class SocialCommandsCog(commands.Cog):
                 f'Here is the link to my Reddit: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["REDDIT"]}'
             )
         else:
-            await ctx.send("I don't currently have a Reddit.")
+            return
 
     @commands.command()
     async def tiktok(self, ctx: commands.Context) -> None:
@@ -100,7 +100,7 @@ class SocialCommandsCog(commands.Cog):
                 f'Here is the link to my tiktok: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["TIKTOK"]}'
             )
         else:
-            await ctx.send("I don't currently have tiktok.")
+            return
 
     @commands.command()
     async def website(self, ctx: commands.Context) -> None:
@@ -112,7 +112,7 @@ class SocialCommandsCog(commands.Cog):
                 f'Here is the link to my website: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["WEBSITE"]}'
             )
         else:
-            await ctx.send("I don't currently have a website.")
+            return
 
     @commands.command(aliases="links")
     async def socials(self, ctx: commands.Context) -> None:
@@ -125,8 +125,10 @@ class SocialCommandsCog(commands.Cog):
             if self.bot.conf_options[ctx.channel.name]["SOCIALS"][social] != "":
                 print(social.capitalize())
                 social_text += f'{social.capitalize()}: {self.bot.conf_options[ctx.channel.name]["SOCIALS"][social]} - '
-
-        await ctx.send(social_text.rstrip(" - "))
+        if social_text != "":
+            await ctx.send(social_text.rstrip(" - "))
+        else:
+            return
 
 
 def prepare(bot: commands.Bot) -> None:
