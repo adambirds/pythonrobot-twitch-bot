@@ -108,6 +108,7 @@ The bot supports the following commands:
 | !socials | !links | `!socials` | Everyone | The streamers social mnedia links. |
 | !tiktok | | `!tiktok` | Everyone | The streamers tiktok link. |
 | !time | !date , !datetime | `!time Europe/London` | Everyone | Current time anywhere in world |
+| !timeout | !to | `!timeout @adamistesting 10` or `!timeout @adamistesting 10 spamming channel` | Moderators | Timeout user for specified number of seconds with or without a reason. |
 | !twitter | | `!twitter` | Everyone | The streamers twitter link. |
 | !website | | `!website` | Everyone | The streamers website link. |
 | !youtube | | `!youtube` | Everyone | The streamers youtube link. |

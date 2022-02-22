@@ -17,6 +17,19 @@ class ModCommandsCog(commands.Cog):
 
         await ctx.send(f"Check out @{user.display_name} over at twitch.tv/{user.name}")
 
+    @commands.command(aliases=["to"])
+    async def timeout(
+        self, ctx: commands.Context, user: twitchio.User, duration: str, *, reason: str = ""
+    ) -> None:
+        """
+        !timeout (!to) command
+        """
+
+        if reason != "":
+            await ctx.send(f"/timeout {user.name} {duration} {reason}")
+        else:
+            await ctx.send(f"/timeout {user.name} {duration}")
+
 
 def prepare(bot: commands.Bot) -> None:
     bot.add_cog(ModCommandsCog(bot))
