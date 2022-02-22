@@ -1,4 +1,5 @@
 # Import libraries
+import logging
 import os
 import sys
 import traceback
@@ -51,6 +52,8 @@ class Bot(commands.Bot):
 
 if __name__ == "__main__":
     conf_options = process_config_file()
+    if conf_options["APP"]["DEBUG"] == True:
+        logging.basicConfig(level=logging.DEBUG)
     channel_names = []
     for channel in conf_options["APP"]["ACCOUNTS"]:
         channel_names.append("#" + channel["name"])

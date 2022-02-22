@@ -1,4 +1,5 @@
 APP:
+  DEBUG: False
   ACCESS_TOKEN: "irc_access_token" ## Get from https://twitchtokengenerator.com
   CLIENT_SECRET: "client_secret" ## App Client Secret
   CLIENT_ID: "client_id" ## App Client ID
