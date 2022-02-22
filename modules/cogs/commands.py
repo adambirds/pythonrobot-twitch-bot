@@ -68,7 +68,7 @@ class CommandsCog(commands.Cog):
         !pycheatsheet command
         """
         await ctx.send(
-            "Here is an awesome Python cheat sheet: https://learnxinyminutes.com/docs/python/."
+            "Here are some awesome Python cheat sheets: Beginner: https://learnxinyminutes.com/docs/python/ More Advanced: https://gto76.github.io/python-cheatsheet/"
         )
 
     @commands.command(name="8ball")
