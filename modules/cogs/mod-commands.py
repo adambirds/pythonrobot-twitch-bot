@@ -30,6 +30,17 @@ class ModCommandsCog(commands.Cog):
         else:
             await ctx.send(f"/timeout {user.name} {duration}")
 
+    @commands.command()
+    async def ban(self, ctx: commands.Context, user: twitchio.User, *, reason: str = "") -> None:
+        """
+        !ban command
+        """
+
+        if reason != "":
+            await ctx.send(f"/ban {user.name} {reason}")
+        else:
+            await ctx.send(f"/ban {user.name}")
+
 
 def prepare(bot: commands.Bot) -> None:
     bot.add_cog(ModCommandsCog(bot))

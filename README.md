@@ -93,6 +93,7 @@ The bot supports the following commands:
 | Command | Aliases | Example | Permissions | Purpose |
 |-------- | ------- | ------- | ----------- | ------- |
 | !8ball | | `!8ball Am I amazing?` | Everyone | The bot replies to a yes or no question. |
+| !ban | | `!ban @adamistesting` or `!ban @adamistesting spamming channel`| Moderators | Ban user with or without a reason. |
 | !dice | !roll | `!dice` | Everyone | Random number between 1 and 6. |
 | !discord | | `!discord` | Everyone | The streamers discord link. |
 | !facebook | !fb | `!facebook` | Everyone | The streamers facebook link. |
