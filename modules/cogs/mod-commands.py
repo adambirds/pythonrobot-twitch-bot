@@ -41,6 +41,14 @@ class ModCommandsCog(commands.Cog):
         else:
             await ctx.send(f"/ban {user.name}")
 
+    @commands.command()
+    async def unban(self, ctx: commands.Context, user: twitchio.User) -> None:
+        """
+        !unban command
+        """
+
+        await ctx.send(f"/unban {user.name}")
+
 
 def prepare(bot: commands.Bot) -> None:
     bot.add_cog(ModCommandsCog(bot))
