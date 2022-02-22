@@ -28,12 +28,22 @@ class CommandsCog(commands.Cog):
         """
         !time (!date) (!datetime) command
         """
-        timezone = timezone.replace(" ", "_")
-        if timezone in pytz.all_timezones:
-            date_time = datetime.now(pytz.timezone(timezone)).strftime("%A %-dth %B %Y %H:%M")
-            await ctx.send(f"The date and time in {timezone} is {date_time}.")
+        if timezone != "":
+            timezone = timezone.replace(" ", "_")
+            if timezone in pytz.all_timezones:
+                date_time = datetime.now(pytz.timezone(timezone)).strftime("%A %-dth %B %Y %H:%M")
+                await ctx.send(f"The date and time in {timezone} is {date_time}.")
+            else:
+                return
         else:
-            return
+            timezone = self.bot.conf_options[ctx.channel.name]["TIMEZONE"]
+            if timezone in pytz.all_timezones:
+                date_time = datetime.now(pytz.timezone(timezone)).strftime("%A %-dth %B %Y %H:%M")
+                await ctx.send(
+                    f"The current date and time for the streamer in {timezone} is {date_time}."
+                )
+            else:
+                return
 
     @commands.command()
     async def getthisbot(self, ctx: commands.Context) -> None:
