@@ -90,6 +90,15 @@ class CommandsCog(commands.Cog):
             'The command to format Python files in your directory with black is "python -m black ." or "black ."'
         )
 
+    @commands.command(aliases=["pyenv", "venv", "virtualenv"])
+    async def pyvenv(self, ctx: commands.Context) -> None:
+        """
+        !pyvenv (!pyenv, !venv, !virtualenv) command
+        """
+        await ctx.send(
+            'The command to create a virtual environment in Python is "python -m venv venv".'
+        )
+
     @commands.command(name="8ball")
     async def eight_ball(self, ctx: commands.Context, *, question: str = "") -> None:
         """
