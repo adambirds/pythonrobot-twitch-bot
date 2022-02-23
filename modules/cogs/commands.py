@@ -82,6 +82,15 @@ class CommandsCog(commands.Cog):
         )
 
     @commands.command()
+    async def gitcheatsheet(self, ctx: commands.Context) -> None:
+        """
+        !gitcheatsheet command
+        """
+        await ctx.send(
+            "Here is an awesome git cheat sheet: https://education.github.com/git-cheat-sheet-education.pdf"
+        )
+
+    @commands.command()
     async def formatpy(self, ctx: commands.Context) -> None:
         """
         !formatpy command

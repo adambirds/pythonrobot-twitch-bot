@@ -99,6 +99,7 @@ The bot supports the following commands:
 | !facebook | !fb | `!facebook` | Everyone | The streamers facebook link. |
 | !formatpy | | `!formatpy` | Everyone | Reminds someone how to format in python |
 | !getthisbot | | `!getthisbot` | Everyone | The link to the bots github |
+| !gitcheatsheet | | `!gitcheatsheet` | Everyone | The bot will reply with link to git cheat sheet. |
 | !github | | `!github` | Everyone | The streamers github link. |
 | !hello | | `!hello` | Everyone | The bot replies hello |
 | !help | !commands | `!help` | Everyone | The bot replies with the link to these commands. |
