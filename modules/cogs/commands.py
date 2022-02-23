@@ -81,6 +81,15 @@ class CommandsCog(commands.Cog):
             "Here are some awesome Python cheat sheets: Beginner: https://learnxinyminutes.com/docs/python/ More Advanced: https://gto76.github.io/python-cheatsheet/"
         )
 
+    @commands.command()
+    async def formatpy(self, ctx: commands.Context) -> None:
+        """
+        !formatpy command
+        """
+        await ctx.send(
+            'The command to format Python files in your directory with black is "python -m black ." or "black ."'
+        )
+
     @commands.command(name="8ball")
     async def eight_ball(self, ctx: commands.Context, *, question: str = "") -> None:
         """

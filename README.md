@@ -97,6 +97,7 @@ The bot supports the following commands:
 | !dice | !roll | `!dice` | Everyone | Random number between 1 and 6. |
 | !discord | | `!discord` | Everyone | The streamers discord link. |
 | !facebook | !fb | `!facebook` | Everyone | The streamers facebook link. |
+| !formatpy | | `!formatpy` | Everyone | Reminds someone how to format in python |
 | !getthisbot | | `!getthisbot` | Everyone | The link to the bots github |
 | !github | | `!github` | Everyone | The streamers github link. |
 | !hello | | `!hello` | Everyone | The bot replies hello |
