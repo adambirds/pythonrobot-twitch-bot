@@ -114,6 +114,18 @@ class SocialCommandsCog(commands.Cog):
         else:
             return
 
+    @commands.command()
+    async def patreon(self, ctx: commands.Context) -> None:
+        """
+        !patron command
+        """
+        if self.bot.conf_options[ctx.channel.name]["SOCIALS"]["PATREON"] != "":
+            await ctx.send(
+                f'Here is the link to my patreon: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["PATREON"]}'
+            )
+        else:
+            return
+
     @commands.command(aliases="links")
     async def socials(self, ctx: commands.Context) -> None:
         """
