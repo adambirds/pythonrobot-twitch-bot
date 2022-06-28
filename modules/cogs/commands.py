@@ -1,5 +1,5 @@
 import random
-from datetime import datetime
+from datetime import datetime, timezone
 
 import pytz
 from twitchio.ext import commands
@@ -98,6 +98,36 @@ class CommandsCog(commands.Cog):
         await ctx.send(
             'The command to format Python files in your directory with black is "python -m black ." or "black ."'
         )
+
+    @commands.command()
+    async def uptime(self, ctx: commands.Context) -> None:
+        """
+        !uptime command
+        """
+        stream = await ctx.bot.fetch_streams(user_logins=[ctx.channel.name])
+        if not stream:
+            return await ctx.send("This channel is not currently live.")
+        else:
+            started_at = stream[0].started_at.replace(tzinfo=timezone.utc)
+            uptime = datetime.utcnow().replace(tzinfo=timezone.utc) - started_at
+            total_seconds = uptime.total_seconds()
+            days, remainder = divmod(total_seconds, 86400)
+            hours, remainder = divmod(remainder, 3600)
+            minutes, seconds = divmod(remainder, 60)
+
+            if days != 0:
+                days_text = f"{int(days)} days, "
+            else:
+                days_text = ""
+
+            if hours != 0:
+                hours_text = f"{int(hours)} hours, "
+            else:
+                hours_text = ""
+
+            return await ctx.send(
+                f"{ctx.channel.name} has been streaming for {days_text }{hours_text}{int(minutes)} minutes and {int(seconds)} seconds."
+            )
 
     @commands.command(aliases=["pyenv", "venv", "virtualenv"])
     async def pyvenv(self, ctx: commands.Context) -> None:

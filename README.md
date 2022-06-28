@@ -116,6 +116,7 @@ The bot supports the following commands:
 | !timeout | !to | `!timeout @adamistesting 10` or `!timeout @adamistesting 10 spamming channel` | Moderators | Timeout user for specified number of seconds with or without a reason. |
 | !twitter | | `!twitter` | Everyone | The streamers twitter link. |
 | !unban | | `!unban @adamistesting` | Moderators | Unban user. |
+| !uptime | | `!uptime` | Everyone | Display how long the streamer has been streaming for. |
 | !website | | `!website` | Everyone | The streamers website link. |
 | !youtube | | `!youtube` | Everyone | The streamers youtube link. |
 
