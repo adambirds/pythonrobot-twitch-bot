@@ -117,11 +117,15 @@ class CommandsCog(commands.Cog):
 
             if days != 0:
                 days_text = f"{int(days)} days, "
+            elif days == 1:
+                hours_text = f"{int(days)} day, "
             else:
                 days_text = ""
 
             if hours != 0:
                 hours_text = f"{int(hours)} hours, "
+            elif hours == 1:
+                hours_text = f"{int(hours)} hour, "
             else:
                 hours_text = ""
 
@@ -168,7 +172,6 @@ class CommandsCog(commands.Cog):
             await ctx.send(f'{self.bot.conf_options[ctx.channel.name]["PROJECT"]}')
         else:
             return
-
 
 def prepare(bot: commands.Bot) -> None:
     bot.add_cog(CommandsCog(bot))
