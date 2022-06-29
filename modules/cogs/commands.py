@@ -173,5 +173,39 @@ class CommandsCog(commands.Cog):
         else:
             return
 
+    @commands.command(aliases=["calc"])
+    async def calculator(
+        self, ctx: commands.Context, value1: str = "", operator: str = "", value2: str = ""
+    ) -> None:
+        """
+        !calculator command
+        """
+        try:
+            value1_int = float(value1)
+            value2_int = float(value2)
+        except:
+            return await ctx.send(
+                f"@{ctx.author.name} you submitted an invalid number for your calculation."
+            )
+
+        match operator:
+            case "+":
+                answer = value1_int + value2_int
+            case "-":
+                answer = value1_int - value2_int
+            case "*":
+                answer = value1_int * value2_int
+            case "/":
+                try:
+                    answer = value1_int / value2_int
+                except:
+                    return await ctx.send(f"@{ctx.author.name} you can't divide by 0.")
+
+            case _:
+                return await ctx.send(f"@{ctx.author.name} you submitted an invalid operator.")
+
+        await ctx.send(f"@{ctx.author.name} the answer is {answer}.")
+
+
 def prepare(bot: commands.Bot) -> None:
     bot.add_cog(CommandsCog(bot))
