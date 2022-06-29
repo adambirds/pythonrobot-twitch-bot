@@ -106,6 +106,7 @@ The bot supports the following commands:
 | !instagram | !ig , !insta | `!instagram` | Everyone | The streamers instagram link. |
 | !patreon | | `!patreon` | Everyone | The streamers patreon link. |
 | !pycheatsheet | | `!pycheatsheet` | Everyone | The bot replies with the link to a Python cheat sheet. |
+| !project | | `!project` | Everyone | The bot replies about information on the current project. |
 | !pyvenv | !pyenv, !venv, !virtualenv | `!pyvenv` | Everyone | The bot replies with the command to create a Python virtual environment. |
 | !quote | | `!quote` | Everyone | The bot replies with a random quote. |
 | !reddit | | `!reddit` | Everyone | The streamers reddit link. |

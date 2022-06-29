@@ -158,6 +158,17 @@ class CommandsCog(commands.Cog):
         else:
             return
 
+    @commands.command()
+    async def project(self, ctx: commands.Context) -> None:
+        """
+        !project command
+        """
+        print(ctx.channel.name)
+        if self.bot.conf_options[ctx.channel.name]["PROJECT"] != "":
+            await ctx.send(f'{self.bot.conf_options[ctx.channel.name]["PROJECT"]}')
+        else:
+            return
+
 
 def prepare(bot: commands.Bot) -> None:
     bot.add_cog(CommandsCog(bot))

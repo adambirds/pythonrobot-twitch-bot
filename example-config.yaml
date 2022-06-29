@@ -26,6 +26,7 @@ APP:
     ]
 codingandgamingwithadam:
   TIMEZONE: "Europe/London"
+  PROJECT: "My current project is building this twith bot."
   SOCIALS:
     GITHUB: "https://github.com/adambirds"
     DISCORD: "https://discord.gg/f5veJaa4ZX"
@@ -39,6 +40,7 @@ codingandgamingwithadam:
     PATREON: ""
 pythonphil:
   TIMEZONE: "Europe/London"
+  PROJECT: ""
   SOCIALS:
     GITHUB: "https://github.com/GunnerShents"
     DISCORD: "https://discord.gg/WTaUVMk5cE"
