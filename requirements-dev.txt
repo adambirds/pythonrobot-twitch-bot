@@ -2,6 +2,7 @@ twitchio
 pyyaml
 pytz
 requests
+asyncpg
 
 ## Zulint
 
