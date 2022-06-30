@@ -93,6 +93,7 @@ The bot supports the following commands:
 | Command | Aliases | Example | Permissions | Purpose |
 |-------- | ------- | ------- | ----------- | ------- |
 | !8ball | | `!8ball Am I amazing?` | Everyone | The bot replies to a yes or no question. |
+| !age | | `!age` | Everyone | The bot replies with a random age. |
 | !ban | | `!ban @adamistesting` or `!ban @adamistesting spamming channel`| Moderators | Ban user with or without a reason. |
 | !calculator | !calc | `!calculator 4 + 4` | Everyone | Performs a simple calculation. Supports +, -, *, / |
 | !dice | !roll | `!dice` | Everyone | Random number between 1 and 6. |

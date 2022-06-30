@@ -206,6 +206,14 @@ class CommandsCog(commands.Cog):
 
         await ctx.send(f"@{ctx.author.name} the answer is {answer}.")
 
+    @commands.command()
+    async def age(self, ctx: commands.Context) -> None:
+        """
+        !age command
+        """
+
+        await ctx.send(f"{ctx.channel.name} is {random.randrange(1, 99)} years old.")
+
 
 def prepare(bot: commands.Bot) -> None:
     bot.add_cog(CommandsCog(bot))
