@@ -10,7 +10,6 @@ class SocialCommandsCog(commands.Cog):
         """
         !github command
         """
-        print(ctx.channel.name)
         if self.bot.conf_options[ctx.channel.name]["SOCIALS"]["GITHUB"] != "":
             await ctx.send(
                 f'Here is my GitHub link: {self.bot.conf_options[ctx.channel.name]["SOCIALS"]["GITHUB"]}'
@@ -137,7 +136,6 @@ class SocialCommandsCog(commands.Cog):
         socials = {k: socials[k] for k in sorted(socials)}
         for social in socials:
             if socials[social] != "":
-                print(social.capitalize())
                 social_text += f"{social.capitalize()}: {socials[social]} - "
         if social_text != "":
             await ctx.send(social_text.rstrip(" - "))

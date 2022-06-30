@@ -167,7 +167,6 @@ class CommandsCog(commands.Cog):
         """
         !project command
         """
-        print(ctx.channel.name)
         if self.bot.conf_options[ctx.channel.name]["PROJECT"] != "":
             await ctx.send(f'{self.bot.conf_options[ctx.channel.name]["PROJECT"]}')
         else:
