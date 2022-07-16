@@ -211,7 +211,7 @@ class CommandsCog(commands.Cog):
         !age command
         """
 
-        await ctx.send(f"{ctx.channel.name} is {random.randrange(1, 99)} years old.")
+        await ctx.send(f"@{ctx.channel.name} is {random.randrange(1, 110)} years old.")
 
 
 def prepare(bot: commands.Bot) -> None:
