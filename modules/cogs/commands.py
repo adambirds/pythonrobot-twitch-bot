@@ -69,7 +69,7 @@ class CommandsCog(commands.Cog):
         !help (!commands) command
         """
         await ctx.send(
-            f"You can the list of commands which this bot supports here: {self.bot.conf_options['APP']['BOT_COMMANDS_LINK']}."
+            f"You can view the list of commands which this bot supports here: {self.bot.conf_options['APP']['BOT_COMMANDS_LINK']}."
         )
 
     @commands.command()
